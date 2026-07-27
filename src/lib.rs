@@ -15,7 +15,7 @@ pub struct SignedVec<T> {
 	neg_vec: Vec<T>,
 }
 
-impl<T: Copy + Clone + Default> Default for SignedVec<T> {
+impl<T: Default> Default for SignedVec<T> {
 	/// Create new `SignedVec`
 	///
 	/// ## Param
