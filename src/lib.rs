@@ -14,7 +14,8 @@ pub struct SignedVec<T> {
 	pos_vec: Vec<T>,
 	neg_vec: Vec<T>,
 }
-impl<T: Copy + Clone + Default> SignedVec<T> {
+
+impl<T: Copy + Clone + Default> Default for SignedVec<T> {
 	/// Create new `SignedVec`
 	///
 	/// ## Param
@@ -25,13 +26,15 @@ impl<T: Copy + Clone + Default> SignedVec<T> {
 	///
 	/// Self: New `SignedVec`
 	///
-	pub const fn default() -> Self {
+	fn default() -> Self {
 		SignedVec {
 			pos_vec: Vec::new(),
 			neg_vec: Vec::new(),
 		}
 	}
+}
 
+impl<T: Copy + Clone + Default> SignedVec<T> {
 	/// Read using the index given
 	///
 	/// ## Param

@@ -1,6 +1,6 @@
 [package]
 name = "signed_vec"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2024"
 description = "A vector data structure that supports negative indexing in Rust"
 license = "Apache-2.0"
