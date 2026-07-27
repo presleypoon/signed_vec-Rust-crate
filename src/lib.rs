@@ -25,7 +25,7 @@ impl<T: Copy + Clone + Default> SignedVec<T> {
 	///
 	/// Self: New `SignedVec`
 	///
-	pub const fn new() -> Self {
+	pub const fn default() -> Self {
 		SignedVec {
 			pos_vec: Vec::new(),
 			neg_vec: Vec::new(),
@@ -54,11 +54,11 @@ impl<T: Copy + Clone + Default> SignedVec<T> {
 	/// ## Param
 	///
 	/// `i` (`isize`): The index you want to use to write the vector
-	/// 
+	///
 	/// `val` (`T`): The value you want to write at the index
-	/// 
+	///
 	/// `default` (`T`): The value you want to write at the index **if** the largest item (in signed i dir) is smaller than `i`
-	/// 
+	///
 	///
 	/// ## Return
 	///
