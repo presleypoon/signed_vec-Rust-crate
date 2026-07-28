@@ -74,6 +74,14 @@ impl<T: Clone> SignedVec<T> {
 			&self.neg_vec[i.unsigned_abs()]
 		}
 	}
+
+	pub fn unsure_read_from_index(&self, i: isize) -> Option<&T> {
+		if i >= 0 {
+			self.pos_vec.get(i as usize)
+		} else {
+			self.neg_vec.get(i.unsigned_abs())
+		}
+	}
 	
 	/// Write using the index given
 	///
