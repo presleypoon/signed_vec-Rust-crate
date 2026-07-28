@@ -57,7 +57,7 @@ impl<T> SignedVec<T> {
 	}
 }
 
-impl<T: Copy + Clone> SignedVec<T> {
+impl<T: Clone> SignedVec<T> {
 	/// Read using the index given
 	///
 	/// ## Param
@@ -67,16 +67,14 @@ impl<T: Copy + Clone> SignedVec<T> {
 	/// ## Return
 	///
 	/// `T`: The type the vec is storing
-	pub fn read_from_index(&self, i: isize) -> T {
+	pub fn read_from_index(&self, i: isize) -> &T {
 		if i >= 0 {
-			self.pos_vec[i as usize]
+			&self.pos_vec[i as usize]
 		} else {
-			self.neg_vec[i.unsigned_abs()]
+			&self.neg_vec[i.unsigned_abs()]
 		}
 	}
-}
-
-impl<T: Clone> SignedVec<T> {
+	
 	/// Write using the index given
 	///
 	/// ## Param
