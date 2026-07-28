@@ -35,6 +35,13 @@ impl<T: Default> Default for SignedVec<T> {
 }
 
 impl<T: Copy + Clone + Default> SignedVec<T> {
+	pub const fn new() -> Self {
+		SignedVec {
+			pos_vec: Vec::new(),
+			neg_vec: Vec::new(),
+		}
+	}
+
 	/// Read using the index given
 	///
 	/// ## Param
