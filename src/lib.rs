@@ -75,6 +75,23 @@ impl<T: Clone> SignedVec<T> {
 		}
 	}
 
+	/// Read using the index given
+	///
+	/// ## Param
+	///
+	/// `i` (`isize`): The index you want to use to read the vector
+	///
+	/// ## Return
+	///
+	/// `&mut T`: The type the vec is storing as a mutable
+	pub fn read_from_index_mut(&mut self, i: isize) -> &mut T {
+		if i >= 0 {
+			&mut self.pos_vec[i as usize]
+		} else {
+			&mut self.neg_vec[i.unsigned_abs()]
+		}
+	}
+
 	/// Read using the index given but not sure does it exist in the vector
 	/// 
 	/// ## Param
@@ -89,6 +106,23 @@ impl<T: Clone> SignedVec<T> {
 			self.pos_vec.get(i as usize)
 		} else {
 			self.neg_vec.get(i.unsigned_abs())
+		}
+	}
+
+	/// Read using the index given but not sure does it exist in the vector
+	/// 
+	/// ## Param
+	/// 
+	/// `i` (`isize`): The index you want to use the read the vector
+	/// 
+	/// ## Return
+	/// 
+	/// `Option<&mut T>`: Some(The type the vec is storing as a mutable), or None if don't exist
+	pub fn unsure_read_from_index_mut(&mut self, i: isize) -> Option<&mut T> {
+		if i >= 0 {
+			self.pos_vec.get_mut(i as usize)
+		} else {
+			self.neg_vec.get_mut(i.unsigned_abs())
 		}
 	}
 	
