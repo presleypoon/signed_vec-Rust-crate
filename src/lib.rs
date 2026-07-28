@@ -42,9 +42,22 @@ impl<T> SignedVec<T> {
 			neg_vec: Vec::new(),
 		}
 	}
+
+	/// Find the range of the `SignedVec`
+	///
+	/// ## Param
+	///
+	/// None
+	///
+	/// ## Return
+	///
+	/// `(usize, usize)`: 1st one is the length of the vec to the negative, 2nd one is the length of the vec to positive (Notes: the smallest item is the negative of the 1st one, and the largest is 2nd)
+	pub fn range(&self) -> (usize, usize) {
+		(self.neg_vec.len(), self.pos_vec.len())
+	}
 }
 
-impl<T: Copy + Clone + Default> SignedVec<T> {
+impl<T: Copy + Clone> SignedVec<T> {
 	/// Read using the index given
 	///
 	/// ## Param
@@ -61,7 +74,9 @@ impl<T: Copy + Clone + Default> SignedVec<T> {
 			self.neg_vec[i.unsigned_abs()]
 		}
 	}
+}
 
+impl<T: Clone> SignedVec<T> {
 	/// Write using the index given
 	///
 	/// ## Param
@@ -92,18 +107,5 @@ impl<T: Copy + Clone + Default> SignedVec<T> {
 			}
 			self.neg_vec[i] = val;
 		}
-	}
-
-	/// Find the range of the `SignedVec`
-	///
-	/// ## Param
-	///
-	/// None
-	///
-	/// ## Return
-	///
-	/// `(usize, usize)`: 1st one is the length of the vec to the negative, 2nd one is the length of the vec to positive (Notes: the smallest item is the negative of the 1st one, and the largest is 2nd)
-	pub fn range(&self) -> (usize, usize) {
-		(self.neg_vec.len(), self.pos_vec.len())
 	}
 }
