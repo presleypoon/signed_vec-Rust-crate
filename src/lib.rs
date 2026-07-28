@@ -34,7 +34,7 @@ impl<T: Default> Default for SignedVec<T> {
 	}
 }
 
-impl<T: Copy + Clone + Default> SignedVec<T> {
+impl<T: Copy + Clone> SignedVec<T> {
 	pub const fn new() -> Self {
 		SignedVec {
 			pos_vec: Vec::new(),
