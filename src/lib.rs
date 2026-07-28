@@ -66,7 +66,7 @@ impl<T: Clone> SignedVec<T> {
 	///
 	/// ## Return
 	///
-	/// `T`: The type the vec is storing
+	/// `&T`: The type the vec is storing
 	pub fn read_from_index(&self, i: isize) -> &T {
 		if i >= 0 {
 			&self.pos_vec[i as usize]
@@ -75,6 +75,15 @@ impl<T: Clone> SignedVec<T> {
 		}
 	}
 
+	/// Read using the index given but not sure does it exist in the vector
+	/// 
+	/// ## Param
+	/// 
+	/// `i` (`isize`): The index you want to use the read the vector
+	/// 
+	/// ## Return
+	/// 
+	/// `Option<&T>`: Some(The type the vec is storing), or None if don't exist
 	pub fn unsure_read_from_index(&self, i: isize) -> Option<&T> {
 		if i >= 0 {
 			self.pos_vec.get(i as usize)
