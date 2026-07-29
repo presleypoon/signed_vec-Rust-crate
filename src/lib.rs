@@ -10,7 +10,7 @@
 /// * `read_from_index()`
 /// * `write_from_index()`
 /// * `range()`
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct SignedVec<T> {
 	pos_vec: Vec<T>,
 	neg_vec: Vec<T>,
