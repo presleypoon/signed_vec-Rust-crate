@@ -93,13 +93,13 @@ impl<T: Clone> SignedVec<T> {
 	}
 
 	/// Read using the index given but not sure does it exist in the vector
-	/// 
+	///
 	/// ## Param
-	/// 
+	///
 	/// `i` (`isize`): The index you want to use the read the vector
-	/// 
+	///
 	/// ## Return
-	/// 
+	///
 	/// `Option<&T>`: Some(The type the vec is storing), or None if don't exist
 	pub fn unsure_read_from_index(&self, i: isize) -> Option<&T> {
 		if i >= 0 {
@@ -110,13 +110,13 @@ impl<T: Clone> SignedVec<T> {
 	}
 
 	/// Read using the index given but not sure does it exist in the vector
-	/// 
+	///
 	/// ## Param
-	/// 
+	///
 	/// `i` (`isize`): The index you want to use the read the vector
-	/// 
+	///
 	/// ## Return
-	/// 
+	///
 	/// `Option<&mut T>`: Some(The type the vec is storing as a mutable), or None if don't exist
 	pub fn unsure_read_from_index_mut(&mut self, i: isize) -> Option<&mut T> {
 		if i >= 0 {
@@ -125,7 +125,7 @@ impl<T: Clone> SignedVec<T> {
 			self.neg_vec.get_mut(i.unsigned_abs())
 		}
 	}
-	
+
 	/// Write using the index given
 	///
 	/// ## Param
@@ -144,7 +144,7 @@ impl<T: Clone> SignedVec<T> {
 		if i >= 0 {
 			let len: usize = self.pos_vec.len();
 			let i: usize = i as usize;
-			if len >= i {
+			if len < i {
 				self.pos_vec.resize(i + 1, default);
 			}
 			self.pos_vec[i] = val;
