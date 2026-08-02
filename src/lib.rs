@@ -144,7 +144,7 @@ impl<T: Clone> SignedVec<T> {
 		if i >= 0 {
 			let len: usize = self.pos_vec.len();
 			let i: usize = i as usize;
-			if len < i {
+			if len <= i {
 				self.pos_vec.resize(i + 1, default);
 			}
 			self.pos_vec[i] = val;
